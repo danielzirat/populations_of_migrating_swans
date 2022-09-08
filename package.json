@@ -1,0 +1,36 @@
+{
+  "name": "code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --ignore ./src/data app.js",
+    "docker-debug": "nodemon --inspect=0.0.0.0:9229 --ignore ./src/data app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielzirat/WebTechnology.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielzirat/WebTechnology/issues"
+  },
+  "homepage": "https://github.com/danielzirat/WebTechnology#readme",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "word2vec": "^1.1.5",
+    "natural": "^5.1.13"
+  },
+  "devDependencies": {
+    "express-partials": "^0.3.0",
+    "express-session": "^1.17.2",
+    "method-override": "^3.0.0",
+    "nodemon": "^2.0.15"
+  }
+}

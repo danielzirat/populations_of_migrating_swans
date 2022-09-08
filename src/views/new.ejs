@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+
+<body>
+
+<%- include('./partials/nav.ejs') %>
+
+<div class="container py-5 h-100">
+    <% if(typeof user != 'undefined' && user[0] == true) { %>
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                <div class="card-body p-5 text-center">
+                    <form action="/new" method="post" class="form-signin">
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input name="title" type="text" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Invalid Page 404" required>
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="text">What will you now?</label>
+                            <textarea name="text" class="form-control mt-2" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-warning mt-3">Ask Question</button>
+                    </form>
+                    <% if(typeof info != 'undefined') { %>
+                        <label class="text-warning mt-3"><%= info %></label>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } else {%>
+        <div class="alert alert-secondary" align="center" role="alert">
+            Please login first!
+        </div>
+    <% }%>
+</div>
+
+
+<%- include('./partials/footer.ejs') %>
+
+</body>
+</html>

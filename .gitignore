@@ -1,0 +1,11 @@
+# macos
+.DS_Store
+
+# ignore WebStorm (JetBrains) folder
+.idea
+
+package-lock.json
+node_modules
+
+# ignore local data folder
+data

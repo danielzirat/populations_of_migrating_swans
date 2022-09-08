@@ -1,0 +1,30 @@
+<!-- header is based on resource: https://getbootstrap.com/docs/5.1/examples/list-groups/, last accessed 07.01.2022-->
+<!-- Copyright 2011-2021 The Bootstrap Authors-->
+<!-- Copyright 2011-2021 Twitter, Inc.-->
+<!-- Copyright 2021 MDBootstrap.com -->
+<!-- Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)-->
+<div class="d-flex card shadow-sm flex-column">
+    <div class="card-header d-flex flex-row justify-content-between">
+        <p><%= new Date(answer.CreationDate).toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric'
+            }) %></p>
+        <div class="mx-3 bg-light rounded icon">
+            <svg data-type="answer" data-action="<%= answer.LikedByUser ? "unlike" : "like" %>"
+                 onclick="postLike(this, <%= answer.Id %>)"
+                 visibility="visible" xmlns="http://www.w3.org/2000/svg" width="16"
+                 height="16"
+                 class="<%= answer.LikedByUser ? "heart-liked" : "heart-unliked" %>" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+            </svg>
+        </div>
+    </div>
+    <div class="flex-column list-group-item d-flex gap-3 py-3 card-body shadow" aria-current="true">
+        <%- answer.Body %>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+version: "2"
+services:
+  node-debug:
+    image: "node"
+    user: "node"
+    container_name: "web-technology-debug"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV= "development"
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - "3000:3000"
+      - "9229:9229"
+    command: bash -c "npm install && npm run docker-debug"

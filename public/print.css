@@ -1,0 +1,5 @@
+@media print {
+    footer, header {
+        visibility: hidden;
+    }
+}

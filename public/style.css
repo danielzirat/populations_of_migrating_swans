@@ -1,0 +1,114 @@
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container {
+    display: flex;
+    flex: 1;
+}
+
+footer {
+    flex: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.blog-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-sm-justify {
+    text-align: justify !important;
+}
+
+.lock:hover .icon-unlock,
+.lock .icon-lock {
+    display: none;
+}
+
+.lock:hover .icon-lock {
+    display: inline;
+}
+
+.heart-unliked {
+    fill:gray;
+}
+
+.heart-unliked:hover {
+    fill:red;
+    cursor: pointer;
+}
+
+.heart-liked {
+    fill: red;
+}
+
+.heart-liked:hover {
+    fill: gray;
+    cursor: pointer;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    background: lightgray;
+    padding: 20px;
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, .15);
+    border-radius: 15px;
+    z-index: 5; /* this will show popup on top */
+}
+
+.popup.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    transition: 200ms ease-in-out;
+}
+
+.popup .form h2 {
+    text-align: center;
+    margin: 0 0 10px 0;
+}
+
+.popup .form .form-element label {
+    font-size: 16px;
+    color: #484848;
+}
+
+.popup .form .form-element textarea {
+    margin: 5px 0;
+    border: 1px solid #000000;
+    border-radius: 5px;
+}
+
+.popup .form-element button {
+    margin-top: 15px;
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+}
+
+#overlay.active {
+    transition: 200ms ease-in-out;
+    opacity: 1;
+    pointer-events: all;
+}
+
+#answers {
+    row-gap: 20px;
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+<script defer src="/scripts/popupAnswer.js"></script>
+
+<body>
+
+<%- include('./partials/nav.ejs') %>
+
+<div id="<%= question.Id %>" class="question main-container flex-column align-self-center w-50 gap-2">
+    <h3>Question</h3>
+    <div class="d-flex card  shadow flex-column">
+        <div class="card-header d-flex flex-row justify-content-between">
+            <p><%= new Date(question.CreationDate).toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: 'numeric'
+                }) %></p>
+            <div class="mx-3 bg-light rounded icon">
+                <svg data-type="question" data-action="<%= likedByUser ? "unlike" : "like" %>"
+                     onclick="postLike(this, <%= question.Id %>)"
+                     visibility="visible" xmlns="http://www.w3.org/2000/svg" width="16"
+                     height="16"
+                     class="<%= likedByUser ? "heart-liked" : "heart-unliked" %>" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                </svg>
+            </div>
+        </div>
+        <h3 class="card-title display-4 fw-bold lh-1 mb-3 text-sm-center"><%= question.Title %></h3>
+        <div class="d-flex flex-column flex-wrap flex-sm-fill card-body text-sm-justify">
+            <%- question.Body %>
+        </div>
+    </div>
+    <h3>Answers</h3>
+    <div id="answers" class="d-flex flex-column">
+        <% if (answers.length > 0) { %>
+            <% answers.forEach(answer => { %>
+                <%- include('./partials/answer_tiny.ejs', {answer}); %>
+            <% }); %>
+        <% } else { %>
+            <p>There are no answers to display...</p>
+        <% } %>
+
+        <% if (user[0]) { %>
+            <%- include('./partials/answer_add.html'); %>
+            <button data-popup-target="#popup" class="btn btn-outline-dark my-5">Add Answer</button>
+        <% } %>
+    </div>
+
+    <h3>Related Questions</h3>
+    <div class="flex-row">
+        <% if (relatedQuestions.length > 0) { %>
+            <% relatedQuestions.forEach(question => { %>
+                <%- include('./partials/question_tiny.ejs', {question}); %>
+            <% }); %>
+        <% } else { %>
+            <p class="text-center">There are no related questions to display...</p>
+        <% } %>
+    </div>
+</div>
+
+<script>
+    function toggleLikes(element) {
+        if (element.getAttribute('data-action') === 'like') {
+            element.setAttribute('data-action', 'unlike');
+        } else {
+            element.setAttribute('data-action', 'like');
+        }
+        element.classList.toggle('heart-liked');
+        element.classList.toggle('heart-unliked');
+        // let like = document.getElementById('like-' + toggleId);
+        // let unlike = document.getElementById('unlike-' + toggleId);
+        // // Note: this fails for partials as like.style.display = ''
+        // // like.style.display = like.style.display === 'hidden' ? 'visible' : 'hidden';
+        // // unlike.style.display = unlike.style.display === 'hidden' ? 'visible' : 'hidden';
+        // console.log('unlike: ' + unlike.style.display)
+        // console.log('like: ' + like.style.display)
+        // // if (like.style.display === '') {
+        // //     // initial toggle call
+        // //     like.style.display = 'hidden';
+        // // } else {
+        //     like.style.display = like.style.display === 'hidden' ? 'visible' : 'hidden';
+        // // }
+        //
+        // // if (unlike.style.display === '') {
+        // //     // initial toggle call
+        // //     unlike.style.display = 'visible';
+        // // } else {
+        //     unlike.style.display = like.style.display === 'hidden' ? 'visible' : 'hidden';
+        // // }
+        // console.log('unlike: ' + unlike.style.display)
+        // console.log('like: ' + like.style.display)
+    }
+
+    function postLike(element, id) {
+        const route = '/' + element.getAttribute('data-type') + '/' + id + '/' + element.getAttribute('data-action');
+        console.log(route);
+
+        const options = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: null
+        };
+
+        fetch(route, options)
+            .then(value => value.json())
+            .then(value => {
+                console.log(value);
+                if (!value.success) {
+                    if (value.redirect) {
+                        window.location = value.redirect;
+                        return;
+                    }
+                    alert('Something went wrong...!');
+                    return;
+                }
+                toggleLikes(element);
+            })
+            .catch(reason => {
+                alert('An Error occurred: ' + reason);
+            });
+    }
+</script>
+
+<%- include('./partials/footer.ejs') %>
+
+</body>
+</html>
