@@ -20,10 +20,8 @@ app.use(express.static('public'));
 
 app.use('/', require('./src/routes/index'));
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-    console.log('Listening on http://localhost:3000')
-})
+app.listen(process.env.PORT || 3000, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
 
 module.exports = app;
