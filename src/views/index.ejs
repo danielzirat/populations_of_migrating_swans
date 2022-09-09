@@ -10,15 +10,7 @@
 <div class="main-container align-self-center">
     <div class="flex-column justify-content-start">
         <h2 class="m-2 text-center">Questions</h2>
-
-        <% if (questions.length > 0) { %>
-            <% questions.forEach(question => { %>
-                <%- include('./partials/question_tiny.ejs', {question}); %>
-            <% }); %>
-        <% } else { %>
             <p class="text-center">There are no questions to display...</p>
-        <% } %>
-
     </div>
 </div>
 

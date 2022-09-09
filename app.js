@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 const background = require('./src/retrieval/background');
 
 // creating model
-background.createModels();
 
 // register view engine ejs
 // ejs is used for server side rendering
@@ -31,30 +30,10 @@ app.use(session({
 }));
 
 app.use('/', require('./src/routes/index'));
-app.use('/about', require('./src/routes/about'));
-app.use('/question', require('./src/routes/question'));
-app.use('/login', require('./src/routes/login'));
-app.use('/logout', require('./src/routes/logout'));
-app.use('/registration', require('./src/routes/registration'));
-app.use('/new', require('./src/routes/addQuestion'));
-app.use('/answer', require('./src/routes/answer'));
 
-// catch 404 and forward to error handler
-app.use(middleWare.checkSession, (req, res) => {
-    res.status(404).render('404', {title: 404, user: req.isSession});
-});
+const PORT = process.env.PORT || 3000;
 
-// error handler
-app.use((err, req, res, next) => {
-    if (err instanceof CustomError) {
-        res.status(err.code).render('error', {title: 'Error', code: err.code, message: err.message});
-        return;
-    }
-
-    res.status(500).render('error', {code: 500, message: 'Something went wrong!'});
-});
-
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log('Listening on http://localhost:3000')
 })
 

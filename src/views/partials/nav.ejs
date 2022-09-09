@@ -26,17 +26,6 @@
                     </svg>
                 </button>
             </form>
-            <% if(typeof user != 'undefined' && user[0] == true) { %>
-                <div class="text-end">
-                    <a href="/logout" class="btn btn-outline-light me-2" role="button">Logout</a>
-                    <a class="text-warning">Logged in as <%= user[1] %></a>
-                </div>
-            <% } else { %>
-                <div class="text-end">
-                    <a href="/login" class="btn btn-outline-light me-2" role="button">Login</a>
-                    <a href="/registration" role="button" class="btn btn-warning">Sign-up</a>
-                </div>
-            <% } %>
         </div>
     </div>
 </header>
