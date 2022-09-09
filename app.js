@@ -18,7 +18,7 @@ app.use(express.static('public'));
 //app.use(bodyParser.json());
 
 
-app.use('/index', require('./src/routes/index'));
+app.use('/', require('./src/routes/index'));
 
 app.listen(process.env.PORT || 3000, function(){
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);

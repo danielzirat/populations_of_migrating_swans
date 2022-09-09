@@ -2,11 +2,11 @@
   "name": "code",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "engines": {
+    "node": "12.11.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --ignore ./src/data app.js",
-    "docker-debug": "nodemon --inspect=0.0.0.0:9229 --ignore ./src/data app.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
