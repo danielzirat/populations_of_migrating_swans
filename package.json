@@ -2,9 +2,6 @@
   "name": "code",
   "version": "1.0.0",
   "description": "",
-  "engines": {
-    "node": "12.11.1"
-  },
   "scripts": {
     "start": "node app.js"
   },
@@ -15,22 +12,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/danielzirat/WebTechnology/issues"
-  },
-  "homepage": "https://github.com/danielzirat/WebTechnology#readme",
   "dependencies": {
+    "@tensorflow/tfjs": "^3.20.0",
+    "@tensorflow/tfjs-core": "^2.3.0",
+    "@tensorflow/tfjs-node": "^3.0.0",
     "body-parser": "^1.19.1",
     "ejs": "^3.1.6",
     "express": "^4.17.2",
-    "express-session": "^1.17.2",
-    "word2vec": "^1.1.5",
-    "natural": "^5.1.13"
-  },
-  "devDependencies": {
-    "express-partials": "^0.3.0",
-    "express-session": "^1.17.2",
-    "method-override": "^3.0.0",
-    "nodemon": "^2.0.15"
+    "python": "^0.0.4"
   }
 }

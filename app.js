@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 
-// creating model
+
 
 // register view engine ejs
 // ejs is used for server side rendering
@@ -13,9 +14,9 @@ app.set('views', 'src/views');
 app.use(express.static('public'));
 
 // parse application/x-www-form-urlencoded
-//app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
 // parse application/json
-//app.use(bodyParser.json());
+app.use(bodyParser.json());
 
 
 app.use('/', require('./src/routes/index'));
