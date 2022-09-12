@@ -21,10 +21,10 @@ router.post('/', (req, res, next) =>{
     tf.setBackend('cpu')
     const handler = tfn.io.fileSystem("./public/model/my_model/model.json");
     tf.loadLayersModel(handler).then(model => {
-        console.log(model.predict(tf.tensor([7])).dataSync()[0]);
+        res.render('index',{prediction: model.predict(tf.tensor([7])).dataSync()[0]});
     });
     //model.predict(3)
-    res.render('index');
+    //res.render('index');
 });
 
 module.exports = router;
