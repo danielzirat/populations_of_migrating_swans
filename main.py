@@ -39,9 +39,9 @@ model.fit(X_train, y_train,
           validation_data=(X_test, y_test))
 
 
-model.save('saved_model/my_model')
+model.save('public/model/my_model/my_model')
 
 print(model.predict(2))
 
 
-tfjs.converters.save_keras_model(model, 'saved_model/my_model')
+tfjs.converters.save_keras_model(model, 'public/model/my_model/my_model')
