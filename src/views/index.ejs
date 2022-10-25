@@ -13,16 +13,17 @@
             <h2 class="p-1 m-2 text-center">Birds as Environmental Indicators</h2>
             <p>
                 Birds are recognized as one of the most important indicators of the environment. Because they are sensitive to habitat change and because they are easy to measure.
-                Ecosystem monitoring can be carried out by ecological indicators to preserve and manage the natural environment. Since it is impractical to monitor all ecosystem components, a few individual species or groups of species can be used as indicators of wider conditions.
+                Ecosystem monitoring can be carried out by ecological indicators to preserve and manage the natural environment. Since it is impractical to monitor all ecosystem components, a few individual species or groups of species can be used as indicators of wider conditions.<br>
                 Indicator species have been used in practical management at the local, regional, national and international levels. Birds have been utilized as indicator species by government agencies. Several studies show that birds may be used as indicators of conditions encounter in ecosystem, at both local and regional spatial scales.
-                Changes in bird populations are often the first indication of environmental problems. Whether ecosystems are managed for agricultural production, wildlife, water, or tourism, success can be measured by the health of birds. A decline in bird numbers tells us that we are damaging the environment through habitat fragmentation and destruction, pollution and pesticides, introduced species or they can be reliable indicators of nutrient status and the abundance of other organism.
-                Birds are a part of the balance of nature. Birds provide insect and rodent control, plant pollination, and seed dispersal which result in tangible benefits to people. Birds live in an environment that is subject to both regular and irregular fluctuations, and bird populations respond to these changes in predictable ways. The cause and effect link between an environmental change and birds are direct and simple one.
-                There is strong interdependence between all living things in the gigantic web of life and the removal of even the smallest form of life may in time endanger the entire structure.
-                The conditions of clean air, food, healthy plants and safe places make good homes for birds and other wildlife. A habitat which is good for birds is also a good environment for people to live in. In this paper we will mainly focus on the prediction and the preprocessing of data with birds. Incomplete data in bird count is a common problem and prevalent in basically all data sets. Therefore we will describe our steps how we deal with missing values. Afterwards we will provide a method for predicting new unforeseen data, which can be used for further use.
+                Changes in bird populations are often the first indication of environmental problems. Whether ecosystems are managed for agricultural production, wildlife, water, or tourism, success can be measured by the health of birds. A decline in bird numbers tells us that we are damaging the environment through habitat fragmentation and destruction, pollution and pesticides, introduced species or they can be reliable indicators of nutrient status and the abundance of other organism.<br>
+                Birds are a part of the balance of nature. Birds provide insect and rodent control, plant pollination, and seed dispersal which result in tangible benefits to people. Birds live in an environment that is subject to both regular and irregular fluctuations, and bird populations respond to these changes in predictable ways. The cause and effect link between an environmental change and birds are direct and simple one.<br>
+                There is strong interdependence between all living things in the gigantic web of life and the removal of even the smallest form of life may in time endanger the entire structure.<br>
+                The conditions of clean air, food, healthy plants and safe places make good homes for birds and other wildlife. A habitat which is good for birds is also a good environment for people to live in. <br>
+                In this paper we will mainly focus on the prediction and the preprocessing of data with birds. Incomplete data in bird count is a common problem and prevalent in basically all data sets. Therefore we will describe our steps how we deal with missing values. Afterwards we will provide a method for predicting new unforeseen data, which can be used for further use.
             </p>
             <h3 class="p-1 m-2">Data</h3>
             <p>
-            The arrival and departure dates and the daily maximum populations of migrating swans (Cygnus cygnus) on the Asadokoro tidal flat, Hiranai town, Aomori Prefecture, Japan, were recorded by elementary school students for more than 50 years between 1956 and 2010. This long history of observation unfortunately came to an end with the closure of the elementary school in 2012.
+            The arrival and departure dates and the daily maximum populations of migrating swans (Cygnus cygnus) on the Asadokoro tidal flat, Hiranai town, Aomori Prefecture, Japan, were recorded by elementary school students for more than 50 years between 1956 and 2010. This long history of observation unfortunately came to an end with the closure of the elementary school in 2012. <br>
 
             The data were acquired by visual observations and counting. We used the raw version of the data of 5899 entries over 10 columns: year, month, day, number of individuals (AM) and (PM), number of adults (AM) and (PM), number of young swans (AM) and (PM) and remarks. We used the first three columns to make a date-time index and predicted the number of individuals (AM), because it had the least amount of missing values. The rest of the columns were not used, because their values were missing or they didn't give any useful information.
             </p>
@@ -33,16 +34,16 @@
             we need a data set of historical daily swan population. We expect to gather
             16,142 data points for daily count of swans from 17/10/1966 to 26/12/2010.
             However, there are only 5774 entries having recorded number of swan during
-            the morning because the swan counting activity was not performed every day.
+            the morning because the swan counting activity was not performed every day. <br>
             As a result, we need to devise a proper data imputation method to impute
             10,368 missing values, which is approximately twice as much as the number of
-            recorded ones, while retaining the data distribution.
+            recorded ones, while retaining the data distribution. <br>
             The data imputation process comprises three main steps. Firstly, for each
             month with recorded swan population in the period (from 10/1996 to 12/2010),
             we impute daily missing data by interpolation. Next, we need to impute missing
             data of the months that have no recorded values. We calculate the average
             number of swan for each month the period(from 10/1996 to 12/2010) and impute
-            the months without any recorded swan population by interpolation. All data
+            the months without any recorded swan population by interpolation. <br> All data
             points belonging to these months are then imputed with the monthly average
             values. Finally, since data points from June to September are either not recorded
             or almost zero, we assume that the swans usually arrive at Asadokoro tidal flat in
@@ -65,7 +66,7 @@
             </p>
             <h5 class="p-1 m-2">Models</h5>
             <p>
-            Since our data is time-series data, we had to use a model that would take as an input the date-time index and predict the number of swans as an output. We experimented with two different time series forecasting models, namely Recursive Auto-regressive and Prophet. Auto-regressive
+            Since our data is time-series data, we had to use a model that would take as an input the date-time index and predict the number of swans as an output. We experimented with two different time series forecasting models, namely Recursive Auto-regressive and Prophet. <br> The first chart reperesents the whole dataset-set and the prediction of the two models. Each data-set can be disabled or enabled, by clicking on the label. To get a year-wise representation you need to click on a specific datapoint in the first chart. The year of this data point will be taken to display the year wise representation.
             </p>
             <h3 class="p-1 m-2">Migration of Swans over Time</h3>
             <div class="chart">
@@ -143,7 +144,7 @@
                     fill: true
                 },
                 {
-                    label: 'Prediction Model 1',
+                    label: 'Prediction Auto-regressive Model',
                     borderColor: '#fd3a3a',
                     borderWidth: 1,
                     data: predictedData1,
@@ -153,7 +154,7 @@
                     showLine: true,
                 },
                 {
-                    label: 'Prediction Model 2',
+                    label: 'Prediction Prophet Model',
                     borderColor: '#983afd',
                     borderWidth: 1,
                     data: predictedData2,
@@ -224,7 +225,7 @@
                     fill: true
                 },
                 {
-                    label: "Prediction Model1 Year: ".concat((new Date(labels[0])).getFullYear().toString()),
+                    label: "Prediction Auto-regressive Model Year: ".concat((new Date(labels[0])).getFullYear().toString()),
                     borderColor: '#fd3a3a',
                     borderWidth: 1,
                     data: [],
@@ -233,7 +234,7 @@
                     fill: true
                 },
                 {
-                    label: "Prediction Model2 Year: ".concat((new Date(labels[0])).getFullYear().toString()),
+                    label: "Prediction Prophet Model Year: ".concat((new Date(labels[0])).getFullYear().toString()),
                     borderColor: '#983afd',
                     borderWidth: 1,
                     data: [],
@@ -370,9 +371,9 @@
                     myChart2.config.data.datasets[0].data = selected_pointData;
                     myChart2.config.data.datasets[0].label = "Dataset Year: ".concat(new_year.toString());
                     myChart2.config.data.datasets[1].data = predicted_set_model1;
-                    myChart2.config.data.datasets[1].label = "Prediction Model1 Year: ".concat(new_year.toString());
+                    myChart2.config.data.datasets[1].label = "Prediction Auto-regressive Model Year: ".concat(new_year.toString());
                     myChart2.config.data.datasets[2].data = predicted_set_model2;
-                    myChart2.config.data.datasets[2].label = "Prediction Model2 Year: ".concat(new_year.toString());
+                    myChart2.config.data.datasets[2].label = "Prediction Prophet Model Year: ".concat(new_year.toString());
                     myChart2.update();
                 }
             }
